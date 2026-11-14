@@ -9,6 +9,12 @@ const requiredFiles = [
   'src/domain/fit.js',
   'src/config/tenant.js',
   'src/data/seed.js',
+  'src/features/storefront/pages.js',
+  'src/features/tryon/tryon.js',
+  'src/features/tryon/tryonMath.js',
+  'public/assets/frames/round.svg',
+  'public/assets/frames/square.svg',
+  'public/assets/frames/cat-eye.svg',
 ];
 
 for (const file of requiredFiles) {

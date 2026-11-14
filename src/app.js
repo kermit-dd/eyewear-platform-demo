@@ -3,6 +3,7 @@ import { frames } from './data/seed.js';
 import { listFrames } from './domain/catalog.js';
 import { calculateFit } from './domain/fit.js';
 import { renderHomePage, renderFrameListPage, renderFrameDetailPage, renderComparePage } from './features/storefront/pages.js';
+import { renderTryOnPage, mountTryOnPage } from './features/tryon/tryon.js';
 
 export const demoMerchant = tenant;
 
@@ -34,7 +35,10 @@ function renderCurrentPage(state) {
     return renderShell(renderFrameDetailPage({ frame, fit: calculateFit(frame, 140) }));
   }
   if (state.page === 'compare') return renderShell(renderComparePage({ frames: state.compareIds.map((id) => frames.find((frame) => frame.skuId === id)).filter(Boolean).length ? state.compareIds.map((id) => frames.find((frame) => frame.skuId === id)).filter(Boolean) : visibleFrames }));
-  if (state.page === 'tryon') return renderShell(renderPlaceholderPage('准备进入试戴', '下一步会打开摄像头，并把选中的镜框放到你的脸上。', 'back-list'));
+  if (state.page === 'tryon') {
+    const frame = frames.find((item) => item.skuId === state.skuId) ?? frames[0];
+    return renderShell(renderTryOnPage({ frame, frames: visibleFrames }));
+  }
   if (state.page === 'lead') return renderShell(renderPlaceholderPage('留下配镜需求', '下一步会填写联系方式、验光信息和想咨询的镜框。', 'back-detail'));
   return renderShell(renderHomePage({ tenant, frames: visibleFrames }));
 }
@@ -46,7 +50,19 @@ export function renderApp() {
 export function mountApp(root = document.querySelector('#app')) {
   if (!root) throw new Error('App root element was not found.');
   const state = { page: 'home', style: '全部', skuId: null, compareIds: [] };
-  const draw = () => { root.innerHTML = renderCurrentPage(state); };
+  let cleanupTryOn;
+  const draw = () => {
+    cleanupTryOn?.();
+    root.innerHTML = renderCurrentPage(state);
+    if (state.page === 'tryon') {
+      const frame = frames.find((item) => item.skuId === state.skuId) ?? frames[0];
+      cleanupTryOn = mountTryOnPage(root.querySelector('.tryon-page'), {
+        frame,
+        frames,
+        onSelectFrame: (skuId) => { state.skuId = skuId; },
+      });
+    }
+  };
   root.addEventListener('click', (event) => {
     const target = event.target.closest('[data-action]');
     if (!target) return;
