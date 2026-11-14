@@ -20,6 +20,12 @@
 - 尺寸输出使用“推荐”“可能偏紧”“可能偏宽”等相对提示。
 - 每个完成的任务都要有对应的测试或构建检查。
 
+## Implementation Amendments
+
+- 当前执行环境无法稳定安装 npm registry 依赖，因此本轮主线改为零依赖 ES module 和 Python 静态服务器，测试使用 Node.js 内置 `node --test`。
+- 原计划中的 React/TypeScript 文件名在实现中对应为原生 JavaScript 模块，页面通过 HTML 字符串和 DOM 挂载函数实现。
+- 配镜表单增加验光单文件名、散光开关、右眼和左眼球镜 S、瞳距 PD、柱镜 C、轴位 A。Demo 只保存本地元数据，不上传文件内容。
+
 ## Review Focus
 
 - 摄像头权限被拒绝时，用户仍能看到可理解的操作提示和静态校准模式。对应测试放在试戴模块任务。
