@@ -1,10 +1,12 @@
 import { tenant } from '../config/tenant.js';
 
+const frameAssetUrl = (filename) => new URL(`../../assets/frames/${filename}`, import.meta.url).href;
+
 const frameAssets = {
-  goldMetal: { kind: 'image', url: '/assets/frames/gold-metal.png', scale: 1.02, offsetX: 0, offsetY: 0, rotation: 0 },
-  tortoiseSquare: { kind: 'image', url: '/assets/frames/tortoise-square.png', scale: 1.02, offsetX: 0, offsetY: 0, rotation: 0 },
-  clearAcetate: { kind: 'image', url: '/assets/frames/clear-acetate.png', scale: 1.02, offsetX: 0, offsetY: 0, rotation: 0 },
-  burgundyCatEye: { kind: 'image', url: '/assets/frames/burgundy-cat-eye.png', scale: 1.02, offsetX: 0, offsetY: 0, rotation: 0 },
+  goldMetal: { kind: 'image', url: frameAssetUrl('gold-metal.png'), scale: 1.02, offsetX: 0, offsetY: 0, rotation: 0 },
+  tortoiseSquare: { kind: 'image', url: frameAssetUrl('tortoise-square.png'), scale: 1.02, offsetX: 0, offsetY: 0, rotation: 0 },
+  clearAcetate: { kind: 'image', url: frameAssetUrl('clear-acetate.png'), scale: 1.02, offsetX: 0, offsetY: 0, rotation: 0 },
+  burgundyCatEye: { kind: 'image', url: frameAssetUrl('burgundy-cat-eye.png'), scale: 1.02, offsetX: 0, offsetY: 0, rotation: 0 },
 };
 
 const definitions = [

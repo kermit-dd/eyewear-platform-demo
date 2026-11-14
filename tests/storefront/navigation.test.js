@@ -10,6 +10,11 @@ test('home page shows merchant and featured frames', () => {
   assert.match(html, /香槟金细圆框/);
 });
 
+test('frame assets resolve from the app base path', () => {
+  assert.match(frames[0].imageUrl, /assets\/frames\/gold-metal\.png$/);
+  assert.doesNotMatch(frames[0].imageUrl, /^\/assets/);
+});
+
 test('frame list shows only the supplied filtered frames', () => {
   const html = renderFrameListPage({ frames: frames.slice(0, 2) });
   assert.match(html, /香槟金细圆框/);
