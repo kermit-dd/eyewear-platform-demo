@@ -75,8 +75,13 @@ export function mountCalibratedTryOnPage(container, { frame, frames, onSelectFra
   let animationId;
   let imageCache = new Map();
   let lastRankedFaceWidth;
+  let lastStatusKey;
+  let lastSummaryKey;
 
   const setStatus = (message, tone = '') => {
+    const nextKey = `${tone}:${message}`;
+    if (nextKey === lastStatusKey) return;
+    lastStatusKey = nextKey;
     status.textContent = message;
     status.dataset.tone = tone;
   };
@@ -90,6 +95,9 @@ export function mountCalibratedTryOnPage(container, { frame, frames, onSelectFra
   };
 
   const setSummary = (metrics) => {
+    const nextKey = metrics ? `${metrics.eyeDistanceMm.toFixed(1)}:${metrics.faceWidthMm.toFixed(1)}:${metrics.faceShape}` : 'empty';
+    if (nextKey === lastSummaryKey) return;
+    lastSummaryKey = nextKey;
     if (!metrics) {
       summary.innerHTML = '<span>测量结果</span><strong>等待人脸识别</strong>';
       return;
