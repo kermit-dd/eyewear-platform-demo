@@ -38,6 +38,14 @@ http://电脑局域网IP:4174
 https://danyang-eyewear-demo.sugaryclock12.chatgpt.site
 ```
 
+GitHub Pages Demo：
+
+```text
+https://kermit-dd.github.io/eyewear-platform-demo/
+```
+
+GitHub 仓库：<https://github.com/kermit-dd/eyewear-platform-demo>
+
 ## 主要路径
 
 - 首页：商户介绍和精选镜框
