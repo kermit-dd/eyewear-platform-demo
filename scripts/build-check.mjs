@@ -15,9 +15,9 @@ const requiredFiles = [
   'src/features/tryon/tryonMath.js',
   'src/features/leads/LeadForm.js',
   'src/features/leads/leads.css',
-  'public/assets/frames/round.svg',
-  'public/assets/frames/square.svg',
-  'public/assets/frames/cat-eye.svg',
+  'assets/frames/round.svg',
+  'assets/frames/square.svg',
+  'assets/frames/cat-eye.svg',
 ];
 
 for (const file of requiredFiles) {

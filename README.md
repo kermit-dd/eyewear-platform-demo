@@ -34,7 +34,7 @@ npm run dev
 
 `src/features/tryon/tryon.js` 在浏览器内动态加载 MediaPipe Face Landmarker。摄像头拒绝、浏览器不支持或模型加载失败时，页面会显示状态提示，仍保留镜框选择和大小校准区域。
 
-镜框素材默认使用 `public/assets/frames/` 下的 SVG。后续可以替换为 GLB，并在商品的 `tryOnAsset` 中设置比例和偏移校准。
+镜框素材默认使用 `assets/frames/` 下的 SVG。后续可以替换为 GLB，并在商品的 `tryOnAsset` 中设置比例和偏移校准。
 
 ## 后续接入小程序
 
