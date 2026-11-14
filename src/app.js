@@ -19,7 +19,7 @@ function renderPlaceholderPage(title, copy, action = 'back-home') {
 
 function renderShell(content) {
   return `
-    <div class="app-shell" data-tenant-id="${tenant.tenantId}">
+    <div class="app-shell" data-tenant-id="${tenant.tenantId}" style="--tenant-theme:${tenant.themeColor}">
       <header class="app-header"><button class="brand-button" type="button" data-action="back-home"><span class="brand-mark">D</span><span>${tenant.name}</span></button><button class="header-icon" type="button" data-action="open-compare">对比</button></header>
       <main>${content}</main>
       <nav class="bottom-nav" aria-label="主导航"><button type="button" data-action="back-home">首页</button><button type="button" data-action="open-list">挑镜框</button><button type="button" data-action="open-tryon">试戴</button></nav>

@@ -10,10 +10,10 @@
 .tryon-current span, .calibration-control { display: block; color: #8a7c74; font-size: 12px; }
 .tryon-current strong { display: block; margin-top: 5px; font-size: 16px; }
 .calibration-control { min-width: 150px; }
-.calibration-control input { display: block; width: 100%; margin-top: 7px; accent-color: #b8643d; }
+.calibration-control input { display: block; width: 100%; margin-top: 7px; accent-color: var(--tenant-theme, #b8643d); }
 .tryon-picker { display: flex; gap: 10px; overflow-x: auto; padding: 4px 0 10px; }
 .tryon-chip { display: flex; min-width: 88px; flex-direction: column; gap: 6px; align-items: center; padding: 7px; border: 1px solid #eadfd8; border-radius: 14px; color: #6d584d; background: #fffaf6; cursor: pointer; }
-.tryon-chip.is-active { border-color: #b8643d; box-shadow: 0 0 0 2px rgba(184, 100, 61, .15); }
+.tryon-chip.is-active { border-color: var(--tenant-theme, #b8643d); box-shadow: 0 0 0 2px rgba(184, 100, 61, .15); }
 .tryon-chip img { width: 68px; height: 42px; object-fit: contain; }
 .tryon-chip span { max-width: 80px; overflow: hidden; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
 .tryon-note { color: #8a7c74; font-size: 12px; line-height: 1.6; }
