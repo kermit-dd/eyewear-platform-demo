@@ -6,7 +6,9 @@ export function deriveFaceAnchor(leftEye, rightEye, nose) {
   const dy = right.y - left.y;
   const eyeDistance = Math.hypot(dx, dy);
   const centerX = (left.x + right.x) / 2;
-  const centerY = nose && Number.isFinite(nose.y) ? nose.y : (left.y + right.y) / 2;
+  // Glasses sit on the eye line. The nose-tip landmark is below the bridge and
+  // would shift the frame down onto the cheeks.
+  const centerY = (left.y + right.y) / 2;
   if (!eyeDistance) return { centerX, centerY, eyeDistance: 0, roll: 0 };
   return { centerX, centerY, eyeDistance, roll: Math.atan2(dy, dx) };
 }

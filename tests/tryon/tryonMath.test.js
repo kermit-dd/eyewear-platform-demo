@@ -2,10 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { deriveFaceAnchor, getFrameTransform } from '../../src/features/tryon/tryonMath.js';
 
-test('derives a stable anchor from ordered eyes and nose', () => {
+test('derives a stable anchor from the eye line instead of the nose tip', () => {
   const anchor = deriveFaceAnchor({ x: 40, y: 50 }, { x: 80, y: 60 }, { x: 60, y: 70 });
   assert.equal(anchor.centerX, 60);
-  assert.equal(anchor.centerY, 70);
+  assert.equal(anchor.centerY, 55);
   assert.equal(anchor.eyeDistance, 41.23105625617661);
   assert.equal(anchor.roll > 0, true);
 });
