@@ -106,6 +106,10 @@ export function mountTryOnPage(container, { frame, frames, onSelectFrame } = {})
   };
 
   const start = async () => {
+    if (!window.isSecureContext) {
+      setStatus('微信内试戴需要 HTTPS，请使用 HTTPS 地址打开', 'error');
+      return;
+    }
     if (!navigator.mediaDevices?.getUserMedia) {
       setStatus('当前浏览器不支持摄像头，仍可查看镜框校准', 'error');
       return;
