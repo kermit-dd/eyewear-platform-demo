@@ -1,4 +1,4 @@
-import { deriveFaceAnchor, getFrameTransform } from './tryonMath.js';
+import { deriveFaceAnchor, getFrameDimensions, getFrameTransform } from './tryonMath.js';
 
 const MEDIAPIPE_MODULE = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/+esm';
 const FACE_MODEL = 'https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task';
@@ -34,8 +34,8 @@ async function loadFaceLandmarker() {
 }
 
 function drawFrame(ctx, image, transform) {
-  if (!image.complete || !transform.width) return;
-  const height = transform.width * 0.36;
+  if (!image.complete || !image.naturalWidth || !transform.width) return;
+  const { height } = getFrameDimensions(image.naturalWidth, image.naturalHeight, transform.width);
   ctx.save();
   ctx.translate(transform.x, transform.y);
   ctx.rotate(transform.rotation);

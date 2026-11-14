@@ -7,13 +7,13 @@ import { renderHomePage, renderFrameListPage, renderFrameDetailPage, renderCompa
 test('home page shows merchant and featured frames', () => {
   const html = renderHomePage({ tenant, frames });
   assert.match(html, /丹阳眼镜样板店/);
-  assert.match(html, /复古圆框/);
+  assert.match(html, /香槟金细圆框/);
 });
 
 test('frame list shows only the supplied filtered frames', () => {
   const html = renderFrameListPage({ frames: frames.slice(0, 2) });
-  assert.match(html, /复古圆框/);
-  assert.doesNotMatch(html, /经典方框/);
+  assert.match(html, /香槟金细圆框/);
+  assert.doesNotMatch(html, /琥珀玳瑁方框/);
 });
 
 test('detail page includes frame dimensions and actions', () => {

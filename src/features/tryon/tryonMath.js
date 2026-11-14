@@ -26,3 +26,9 @@ export function getFrameTransform(anchor, asset = {}) {
     rotation: anchor.roll + rotation,
   };
 }
+
+export function getFrameDimensions(imageWidth, imageHeight, width) {
+  const safeWidth = Number.isFinite(width) ? width : 0;
+  const ratio = imageWidth > 0 && imageHeight > 0 ? imageHeight / imageWidth : 0.36;
+  return { width: safeWidth, height: safeWidth * ratio };
+}

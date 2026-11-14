@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { deriveFaceAnchor, getFrameTransform } from '../../src/features/tryon/tryonMath.js';
+import { deriveFaceAnchor, getFrameDimensions, getFrameTransform } from '../../src/features/tryon/tryonMath.js';
 
 test('derives a stable anchor from the eye line instead of the nose tip', () => {
   const anchor = deriveFaceAnchor({ x: 40, y: 50 }, { x: 80, y: 60 }, { x: 60, y: 70 });
@@ -33,4 +33,10 @@ test('maps anchor and asset calibration to a frame transform', () => {
   assert.equal(transform.x, 104);
   assert.equal(transform.y, 72);
   assert.equal(transform.rotation, 0.25);
+});
+
+test('preserves the source aspect ratio for realistic frame assets', () => {
+  const dimensions = getFrameDimensions(1983, 793, 240);
+  assert.equal(dimensions.width, 240);
+  assert.ok(Math.abs(dimensions.height - (240 * 793) / 1983) < 1e-9);
 });
