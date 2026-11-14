@@ -32,6 +32,12 @@ http://电脑局域网IP:4174
 
 当前已配置 Sites HTTPS 发布入口。更新代码后先执行 `npm run prepare:site`，再发布 `dist/` 目录。
 
+当前可直接在手机微信中打开的 HTTPS Demo：
+
+```text
+https://danyang-eyewear-demo.sugaryclock12.chatgpt.site
+```
+
 ## 主要路径
 
 - 首页：商户介绍和精选镜框
