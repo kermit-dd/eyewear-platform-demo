@@ -6,7 +6,7 @@ const FACE_MODEL = 'https://storage.googleapis.com/mediapipe-models/face_landmar
 export function renderTryOnPage({ frame, frames }) {
   return `
     <section class="page-section tryon-page">
-      <div class="tryon-header"><button class="text-button" type="button" data-action="back-list">← 返回</button><span class="eyebrow">实时试戴</span><button class="text-button" type="button" data-action="open-lead" data-sku-id="${frame.skuId}">咨询</button></div>
+      <div class="tryon-header"><button class="text-button" type="button" data-action="back-list">← 返回</button><span class="eyebrow">实时试戴</span><button class="text-button" type="button" data-action="open-calibrated" data-sku-id="${frame.skuId}">按尺寸试戴</button></div>
       <div class="tryon-stage">
         <video class="tryon-video" playsinline muted></video>
         <canvas class="tryon-canvas"></canvas>
@@ -22,7 +22,7 @@ export function renderTryOnPage({ frame, frames }) {
   `;
 }
 
-async function loadFaceLandmarker() {
+export async function loadFaceLandmarker() {
   const vision = await import(MEDIAPIPE_MODULE);
   const fileset = await vision.FilesetResolver.forVisionTasks('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/wasm');
   return vision.FaceLandmarker.createFromOptions(fileset, {
@@ -33,7 +33,7 @@ async function loadFaceLandmarker() {
   });
 }
 
-function drawFrame(ctx, image, transform) {
+export function drawFrame(ctx, image, transform) {
   if (!image.complete || !image.naturalWidth || !transform.width) return;
   const { height } = getFrameDimensions(image.naturalWidth, image.naturalHeight, transform.width);
   ctx.save();

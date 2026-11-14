@@ -27,6 +27,7 @@ export function renderHomePage({ tenant, frames }) {
         <div class="home-actions">
           <button class="primary-button" type="button" data-action="open-list">开始挑选</button>
           <button class="text-button" type="button" data-action="open-tryon">直接试戴</button>
+          <button class="text-button" type="button" data-action="open-calibrated">按尺寸试戴</button>
         </div>
       </div>
       <div class="section-heading"><div><span class="eyebrow">本店精选</span><h2>适合今天的镜框</h2></div><button class="text-button" type="button" data-action="open-list">查看全部</button></div>

@@ -4,6 +4,7 @@ import { listFrames } from './domain/catalog.js';
 import { calculateFit } from './domain/fit.js';
 import { renderHomePage, renderFrameListPage, renderFrameDetailPage, renderComparePage } from './features/storefront/pages.js';
 import { renderTryOnPage, mountTryOnPage } from './features/tryon/tryon.js';
+import { renderCalibratedTryOnPage, mountCalibratedTryOnPage } from './features/tryon/calibratedTryOn.js';
 import { renderLeadPage, mountLeadForm } from './features/leads/LeadForm.js';
 
 export const demoMerchant = tenant;
@@ -40,6 +41,10 @@ function renderCurrentPage(state) {
     const frame = frames.find((item) => item.skuId === state.skuId) ?? frames[0];
     return renderShell(renderTryOnPage({ frame, frames: visibleFrames }));
   }
+  if (state.page === 'calibrated') {
+    const frame = frames.find((item) => item.skuId === state.skuId) ?? frames[0];
+    return renderShell(renderCalibratedTryOnPage({ frame, frames: visibleFrames }));
+  }
   if (state.page === 'lead') {
     const frame = frames.find((item) => item.skuId === state.skuId) ?? frames[0];
     return renderShell(renderLeadPage({ frame }));
@@ -66,6 +71,14 @@ export function mountApp(root = document.querySelector('#app')) {
         onSelectFrame: (skuId) => { state.skuId = skuId; },
       });
     }
+    if (state.page === 'calibrated') {
+      const frame = frames.find((item) => item.skuId === state.skuId) ?? frames[0];
+      cleanupTryOn = mountCalibratedTryOnPage(root.querySelector('.calibrated-tryon-page'), {
+        frame,
+        frames,
+        onSelectFrame: (skuId) => { state.skuId = skuId; },
+      });
+    }
     if (state.page === 'lead') {
       const frame = frames.find((item) => item.skuId === state.skuId) ?? frames[0];
       mountLeadForm(root.querySelector('.lead-page'), { frame });
@@ -81,6 +94,7 @@ export function mountApp(root = document.querySelector('#app')) {
     if (action === 'open-detail') { state.page = 'detail'; state.skuId = skuId; }
     if (action === 'open-compare') state.page = 'compare';
     if (action === 'open-tryon') { state.page = 'tryon'; state.skuId = skuId ?? state.skuId; }
+    if (action === 'open-calibrated') { state.page = 'calibrated'; state.skuId = skuId ?? state.skuId; }
     if (action === 'open-lead') { state.page = 'lead'; state.skuId = skuId ?? state.skuId; }
     if (action === 'back-detail') state.page = 'detail';
     if (action === 'filter-style') { state.style = target.dataset.style; state.page = 'list'; }
