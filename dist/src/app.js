@@ -1,5 +1,5 @@
 import { tenant } from './config/tenant.js';
-import { frames } from './data/seed.js';
+import { frames } from './data/seed.js?v=asset-path-fix';
 import { listFrames } from './domain/catalog.js';
 import { calculateFit } from './domain/fit.js';
 import { renderHomePage, renderFrameListPage, renderFrameDetailPage, renderComparePage } from './features/storefront/pages.js';
