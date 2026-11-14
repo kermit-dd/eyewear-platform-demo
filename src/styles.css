@@ -1,0 +1,35 @@
+:root {
+  color: #2f2926;
+  background: #f6f1ec;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; min-width: 320px; }
+
+button { font: inherit; }
+
+.app-shell { width: min(100%, 720px); margin: 0 auto; padding: 20px; }
+
+.hero-card {
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+  border-radius: 28px;
+  color: #fffaf5;
+  background: linear-gradient(145deg, #5f3a2f, #b8643d);
+  box-shadow: 0 20px 50px rgba(74, 45, 35, 0.18);
+}
+
+.eyebrow { margin: 0 0 18px; font-size: 13px; letter-spacing: 0.08em; opacity: 0.82; }
+
+h1 { margin: 0; font-size: clamp(32px, 8vw, 56px); line-height: 1.05; }
+
+.hero-copy { max-width: 320px; margin: 18px 0 28px; line-height: 1.6; color: rgba(255, 250, 245, 0.82); }
+
+.primary-button { width: fit-content; border: 0; border-radius: 999px; padding: 12px 20px; color: #5f3a2f; background: #fffaf5; cursor: pointer; }
