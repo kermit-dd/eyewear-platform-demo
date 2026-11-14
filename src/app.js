@@ -4,6 +4,7 @@ import { listFrames } from './domain/catalog.js';
 import { calculateFit } from './domain/fit.js';
 import { renderHomePage, renderFrameListPage, renderFrameDetailPage, renderComparePage } from './features/storefront/pages.js';
 import { renderTryOnPage, mountTryOnPage } from './features/tryon/tryon.js';
+import { renderLeadPage, mountLeadForm } from './features/leads/LeadForm.js';
 
 export const demoMerchant = tenant;
 
@@ -39,7 +40,10 @@ function renderCurrentPage(state) {
     const frame = frames.find((item) => item.skuId === state.skuId) ?? frames[0];
     return renderShell(renderTryOnPage({ frame, frames: visibleFrames }));
   }
-  if (state.page === 'lead') return renderShell(renderPlaceholderPage('留下配镜需求', '下一步会填写联系方式、验光信息和想咨询的镜框。', 'back-detail'));
+  if (state.page === 'lead') {
+    const frame = frames.find((item) => item.skuId === state.skuId) ?? frames[0];
+    return renderShell(renderLeadPage({ frame }));
+  }
   return renderShell(renderHomePage({ tenant, frames: visibleFrames }));
 }
 
@@ -61,6 +65,10 @@ export function mountApp(root = document.querySelector('#app')) {
         frames,
         onSelectFrame: (skuId) => { state.skuId = skuId; },
       });
+    }
+    if (state.page === 'lead') {
+      const frame = frames.find((item) => item.skuId === state.skuId) ?? frames[0];
+      mountLeadForm(root.querySelector('.lead-page'), { frame });
     }
   };
   root.addEventListener('click', (event) => {
