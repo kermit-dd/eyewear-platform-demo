@@ -1,6 +1,6 @@
 # 丹阳眼镜样板店 H5 Demo
 
-这是一个单商户眼镜选购与 AR 试戴 Demo，当前以零依赖静态 H5 方式运行。它包含商品筛选、镜框尺寸、镜框对比、摄像头试戴、PD 或标准参考卡片尺寸校准、购买意向和验光信息填写。
+这是一个单商户眼镜选购与 AR 试戴 Demo，当前以零依赖静态 H5 方式运行。视觉采用雾蓝科技与米白纸张的编辑感布局，包含商品筛选、镜框尺寸、镜框对比、摄像头试戴、PD 或标准参考卡片尺寸校准、购买意向和验光信息填写。
 
 ## 启动
 
@@ -43,6 +43,8 @@ GitHub Pages Demo：
 ```text
 https://kermit-dd.github.io/eyewear-platform-demo/
 ```
+
+当前页面的视觉语言是深墨蓝、雾蓝、暖白和铜色。首页强调“先量尺寸，再试戴”，试戴页使用深色观测台显示 LIVE、FACE TRACKING、镜框总宽和校准状态。
 
 GitHub 仓库：<https://github.com/kermit-dd/eyewear-platform-demo>
 

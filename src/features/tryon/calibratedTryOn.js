@@ -17,8 +17,10 @@ function renderFrameChip(frame, fitLabel = '等待测量') {
 export function renderCalibratedTryOnPage({ frame, frames }) {
   return `
     <section class="page-section tryon-page calibrated-tryon-page">
-      <div class="tryon-header"><button class="text-button" type="button" data-action="back-list">← 返回</button><span class="eyebrow">尺寸校准试戴</span><button class="text-button" type="button" data-action="open-tryon" data-sku-id="${frame.skuId}">直接试戴</button></div>
+      <div class="tryon-header"><button class="text-button" type="button" data-action="back-list">← 返回</button><div class="tryon-header__copy"><span class="eyebrow">03 / 试戴实验室</span><h1>尺寸校准</h1></div><button class="text-button" type="button" data-action="open-tryon" data-sku-id="${frame.skuId}">直接试戴 ↗</button></div>
       <div class="tryon-stage calibrated-stage">
+        <div class="tryon-stage__hud"><span class="live-badge"><i></i> LIVE</span><span>CALIBRATION / ON</span></div>
+        <div class="tryon-stage__crosshair" aria-hidden="true"></div>
         <video class="tryon-video" playsinline muted></video>
         <canvas class="tryon-canvas"></canvas>
         <div class="reference-card-guide" data-reference-guide hidden><span>参考框</span></div>
@@ -43,8 +45,9 @@ export function renderCalibratedTryOnPage({ frame, frames }) {
       <button class="primary-button calibration-start-button" type="button" data-start-calibration>开始测量</button>
       <div class="measurement-summary" data-measurement-summary><span>测量结果</span><strong>等待人脸识别</strong></div>
       <div class="tryon-toolbar"><div class="tryon-current"><span>当前镜框</span><strong data-current-frame>${frame.name}</strong></div><label class="calibration-control">微调大小 <input data-scale type="range" min="0.85" max="1.15" step="0.01" value="1" /></label></div>
+      <div class="frame-measurement"><div><span>校准依据</span><strong>PD / 卡片</strong></div><div><span>当前镜框</span><strong>${frame.frameWidth} mm</strong></div><div><span>处理方式</span><strong>本机完成</strong></div></div>
       <div class="tryon-picker calibrated-picker">${frames.slice(0, 6).map((item) => renderFrameChip(item, item.skuId === frame.skuId ? '当前镜框' : '等待测量')).join('')}</div>
-      <p class="tryon-note">校准结果用于镜框相对尺寸推荐和试戴预览，最终适配以实体佩戴和验光数据为准。</p>
+      <p class="tryon-note"><span>实验室提示</span> 校准结果用于镜框相对尺寸推荐和试戴预览，最终适配以实体佩戴和验光数据为准。</p>
     </section>
   `;
 }

@@ -6,8 +6,10 @@ const FACE_MODEL = 'https://storage.googleapis.com/mediapipe-models/face_landmar
 export function renderTryOnPage({ frame, frames }) {
   return `
     <section class="page-section tryon-page">
-      <div class="tryon-header"><button class="text-button" type="button" data-action="back-list">← 返回</button><span class="eyebrow">实时试戴</span><button class="text-button" type="button" data-action="open-calibrated" data-sku-id="${frame.skuId}">按尺寸试戴</button></div>
+      <div class="tryon-header"><button class="text-button" type="button" data-action="back-list">← 返回</button><div class="tryon-header__copy"><span class="eyebrow">03 / 试戴实验室</span><h1>实时试戴</h1></div><button class="text-button" type="button" data-action="open-calibrated" data-sku-id="${frame.skuId}">按尺寸试戴 ↗</button></div>
       <div class="tryon-stage">
+        <div class="tryon-stage__hud"><span class="live-badge"><i></i> LIVE</span><span>FACE TRACKING / ON</span></div>
+        <div class="tryon-stage__crosshair" aria-hidden="true"></div>
         <video class="tryon-video" playsinline muted></video>
         <canvas class="tryon-canvas"></canvas>
         <div class="tryon-status" data-tryon-status>正在准备摄像头…</div>
@@ -16,8 +18,9 @@ export function renderTryOnPage({ frame, frames }) {
         <div class="tryon-current"><span>当前镜框</span><strong data-current-frame>${frame.name}</strong></div>
         <label class="calibration-control">镜框大小 <input data-scale type="range" min="0.75" max="1.3" step="0.01" value="${frame.tryOnAsset?.scale ?? 1}" /></label>
       </div>
+      <div class="frame-measurement"><div><span>镜框总宽</span><strong>${frame.frameWidth} mm</strong></div><div><span>鼻梁宽</span><strong>${frame.bridgeWidth} mm</strong></div><div><span>适合</span><strong>${frame.fitTags[0]}</strong></div></div>
       <div class="tryon-picker">${frames.slice(0, 6).map((item) => `<button class="tryon-chip ${item.skuId === frame.skuId ? 'is-active' : ''}" type="button" data-tryon-sku="${item.skuId}"><img src="${item.imageUrl}" alt="${item.name}" /><span>${item.name}</span></button>`).join('')}</div>
-      <p class="tryon-note">试戴用于判断外观和相对比例，尺寸提示以商品详情为准。</p>
+      <p class="tryon-note"><span>实验室提示</span> 试戴用于判断外观和相对比例，尺寸提示以商品详情为准。</p>
     </section>
   `;
 }

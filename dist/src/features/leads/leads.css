@@ -1,12 +1,12 @@
 .lead-page { padding-bottom: 28px; }
-.lead-frame-summary { display: flex; justify-content: space-between; gap: 16px; margin: 0 0 12px; padding: 14px 16px; border-radius: 16px; color: #6d584d; background: #f8eee8; }
-.lead-frame-summary span { color: #a36a50; font-size: 12px; }
-.lead-card { margin: 12px 0; padding: 18px; border-radius: 20px; background: #fffaf6; }
+.lead-frame-summary { display: flex; justify-content: space-between; gap: 16px; margin: 0 0 12px; padding: 14px 16px; border-left: 3px solid var(--mist); color: var(--ink); background: rgba(155, 191, 196, .18); }
+.lead-frame-summary span { color: var(--copper); font-size: 12px; }
+.lead-card { margin: 12px 0; padding: 18px; border: 1px solid var(--line); background: var(--surface); }
 .upload-card { display: grid; gap: 8px; cursor: pointer; }
 .upload-card input[type="file"] { position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0; }
 .upload-card__title { font-size: 20px; font-weight: 700; }
 .upload-card__copy { color: #8a7c74; line-height: 1.6; }
-.upload-card__file { color: var(--tenant-theme, #b8643d); font-size: 13px; }
+.upload-card__file { color: var(--copper); font-size: 13px; }
 .manual-card__heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
 .manual-card__heading strong, .manual-card__heading span { display: block; }
 .manual-card__heading span { margin-top: 8px; color: #8a7c74; line-height: 1.6; }
@@ -16,8 +16,8 @@
 .prescription-eye { display: grid; gap: 10px; }
 .prescription-eye__title { padding-bottom: 8px; border-bottom: 1px solid #eadfd8; font-size: 18px; }
 .lead-form label:not(.upload-card):not(.switch-field) { display: grid; gap: 7px; color: #6d584d; font-size: 13px; }
-.lead-form input:not([type="file"]), .lead-form textarea { width: 100%; border: 1px solid #eadfd8; border-radius: 12px; padding: 11px 12px; color: #2f2926; background: #fff; font: inherit; }
-.lead-form input:disabled { color: #b9aca4; background: #f6f1ec; }
+.lead-form input:not([type="file"]), .lead-form textarea { width: 100%; border: 1px solid var(--line); border-radius: 2px; padding: 11px 12px; color: var(--ink); background: var(--paper); font: inherit; }
+.lead-form input:disabled { color: #98a4a8; background: var(--surface-soft); }
 .contact-card { display: grid; gap: 15px; }
 .form-status { min-height: 24px; margin: 14px 0 0; color: #8a7c74; font-size: 13px; }
 .form-status[data-tone="success"] { color: #3e7c58; }
